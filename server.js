@@ -56,12 +56,13 @@ fs.readFile(html_template, function (error, data) {
 });
 
 http.createServer(function (request, response) {
-	response.writeHead(200, {'Content-Type': 'text/html'});
+	var mimeType = 'application/javascript';
 	var responseBody = "";
 	// hacktabulous router
 	switch( request.url ){
 		case '/':
 			responseBody = cached_html;
+			mimeType = 'text/html';
 			break;
 		case '/jquery-1.5.2.js':
 			responseBody = cached_jquery;
@@ -76,8 +77,9 @@ http.createServer(function (request, response) {
 			responseBody = cached_demo;
 			break;
 	}
+	response.writeHead( 200, {'Content-Type': mimeType} );
 	response.write( responseBody );
 	response.end();
-}).listen(1337, "127.0.0.1");
+}).listen( 1337, "127.0.0.1" );
 
 console.log("Server running at http://127.0.0.1:1337/ #thatsabingo!");

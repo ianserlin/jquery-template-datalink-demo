@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="jquery-1.5.2.js"></script>
-    <script type="text/javascript" src="jquery.datalink.js"></script>
-    <script type="text/javascript" src="jquery.tmpl.js"></script>
-    <script type="text/javascript" src="demo.js"></script>
+    <script src="jquery-1.5.2.js"></script>
+    <script src="jquery.datalink.js"></script>
+    <script src="jquery.tmpl.js"></script>
+    <script src="demo.js"></script>
+    
+    <script id="characterTemplate" type="text/x-jquery-tmpl">
+      <div>
+        <label class="name" for="${name}">${name}</label>
+        <input type="text" name="${name}" id="${name}" value="${awesomeness}"/>
+      </div>
+    </script>
+    
+    <style type="text/css">
+      label.name {
+        width: 200px;
+        display: block;
+        float: left;
+      }
+      label.header {
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
-    <form name="person">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" />
+    <div>
+      <label class="name header">Name</label>
+      <label class="header">Awesomeness</label>
+    </div>
+    <form name="characters" id="characters">
     </form>
+    <button id="logButton">Write collection to JS console</button>
+    
+    <button id="triggerDataPropogationButton">Set Data values to 'over9000'</button>
   </body>
 </html>
